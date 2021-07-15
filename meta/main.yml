@@ -3,3 +3,4 @@
 dependencies:
   - role: gpac
     tags: [multimedia, dependencies]
+    when: gpac_version != ''
