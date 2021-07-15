@@ -1,5 +1,11 @@
 ---
 
+- dynamic_defaults:
+    hostvars: '{{ hostvars[inventory_hostname] }}'
+    defaults: '{{ multimedia_dynamic_defaults }}'
+    must_match: yes
+  tags: [multimedia, always]
+
 - block:
     - name: Add webupd8 repository to install the pulseaudio equalizer
       apt_repository:
@@ -30,17 +36,17 @@
 
     - name: Install encrypted DVD playback packages
       package:
-        name: libdvdread4
+        name: libdvdread{{ libdvdread_version }}
         state: present
 
     - name: Retrieve encrypted DVD playback script
       stat:
-        path: /usr/share/doc/libdvdread4/install-css.sh
+        path: /usr/share/doc/libdvdread{{ libdvdread_version }}/install-css.sh
       register: dvd_script
 
     - name: Enable encrypted DVD playback
       command:
-        /usr/share/doc/libdvdread4/install-css.sh
+        /usr/share/doc/libdvdread{{ libdvdread_version }}/install-css.sh
       when: dvd_script.stat.exists
   become: yes
   tags: [multimedia, packages]
