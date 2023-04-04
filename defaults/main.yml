@@ -32,6 +32,38 @@ multimedia_dynamic_defaults:
     video_packages:
       - openshot
 
+  ubuntu-22.*:
+    libdvdread_version: 8
+    audio_packages:
+      - audacity
+      - eyed3
+      - kid3-qt
+      - pulseaudio-equalizer
+      - sound-juicer
+    imaging_packages:
+      - exiv2
+      - gimp
+      # gimp-data
+      # gimp-gap
+      # gimp-gmic
+      # gimp-gutenprint
+      # gimp-help-common
+      # gimp-help-en
+      # gimp-help-fr
+      # gimp-plugin-registry
+      # - gimp-ufraw
+      - hugin
+      - imagemagick
+      - inkscape
+      - xsane
+    media_player_packages:
+      - smplayer
+      - vlc
+      - x264
+      - kodi
+    video_packages:
+      - openshot
+
   linux:
     libdvdread_version: 4
     audio_packages:
